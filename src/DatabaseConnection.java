@@ -9,8 +9,8 @@ public class DatabaseConnection {
 
     // Método para actualizar la contraseña a usar
     public static void setPassword(String password) {
-        System.out.println(password);
         PASSWORD = password;
+        System.out.println(PASSWORD);
     }
 
     public static Connection getConnection() throws SQLException {

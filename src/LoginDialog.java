@@ -7,13 +7,13 @@ import java.sql.SQLException;
 public class LoginDialog extends JDialog {
     private boolean succeeded;
     private JPasswordField passwordField;
-    private String enteredPassword; // Almacena la clave ingresada
+    private String enteredPassword;
 
     public LoginDialog(Frame parent) {
         super(parent, "Acceso al Sistema", true);
         setLayout(new BorderLayout(10, 10));
 
-        // Título principal en la parte superior
+        // Título principal
         JLabel titleLabel = new JLabel("Ingrese la contraseña de MySQL", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         add(titleLabel, BorderLayout.NORTH);
@@ -49,8 +49,6 @@ public class LoginDialog extends JDialog {
                     DatabaseConnection.setPassword(key);
                     Connection conn = DatabaseConnection.getConnection();
                     conn.close();
-
-                    // Si la conexión es exitosa, guardamos la contraseña y cerramos el diálogo
                     enteredPassword = key;
                     succeeded = true;
                     dispose();

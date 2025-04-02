@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DatabaseDAO {
 
-    // 1. Listar todas las bases de datos
+    //metodo para listar todas las bases de datos
     public List<String> getDatabases() {
         List<String> databases = new ArrayList<>();
         String sql = "SHOW DATABASES";
@@ -20,7 +20,7 @@ public class DatabaseDAO {
         return databases;
     }
 
-    // 2. Listar las tablas de una base de datos específica
+    //metodo para listar las tablas de una base de datos específica
     public List<String> getTables(String databaseName) {
         List<String> tables = new ArrayList<>();
         String sql = "SHOW TABLES FROM " + databaseName;
@@ -36,7 +36,7 @@ public class DatabaseDAO {
         return tables;
     }
 
-    // 3. Obtener la estructura (columnas, tipos, etc.) de una tabla
+    //metodo para obtener la estructura (columnas, tipos, etc.) de una tabla
     public List<String[]> getTableStructure(String databaseName, String tableName) {
         // DESCRIBE <base>.<tabla>
         List<String[]> structure = new ArrayList<>();
@@ -60,7 +60,7 @@ public class DatabaseDAO {
         return structure;
     }
 
-    // 4. Obtener todos los registros de una tabla
+    //metodo para obtener todos los registros de una tabla
     public List<List<Object>> getTableData(String databaseName, String tableName) {
         List<List<Object>> data = new ArrayList<>();
         String sql = "SELECT * FROM " + databaseName + "." + tableName;
@@ -88,7 +88,6 @@ public class DatabaseDAO {
     // Método de apoyo para conocer las columnas de la tabla (para construir el encabezado de la JTable)
     public List<String> getTableColumns(String databaseName, String tableName) {
         List<String> columns = new ArrayList<>();
-        // Con LIMIT 1 basta para leer la estructura
         String sql = "SELECT * FROM " + databaseName + "." + tableName + " LIMIT 1";
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
