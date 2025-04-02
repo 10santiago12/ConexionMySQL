@@ -12,7 +12,6 @@ public class MainFrame extends JFrame {
     private JButton structureButton;             // Botón para mostrar estructura
     private JButton dataButton;                  // Botón para mostrar datos (registros)
 
-    private JTable resultTable;                  // Tabla para desplegar la información
     private DefaultTableModel tableModel;
 
     public MainFrame() {
@@ -65,7 +64,8 @@ public class MainFrame extends JFrame {
 
         // Panel central con la JTable
         tableModel = new DefaultTableModel();
-        resultTable = new JTable(tableModel);
+        // Tabla para desplegar la información
+        JTable resultTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(resultTable);
         add(scrollPane, BorderLayout.CENTER);
     }
